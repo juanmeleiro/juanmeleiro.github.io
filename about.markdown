@@ -4,15 +4,11 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Juan Meleiro é estudante de matemática no [Instituto de Matemática e
+Estatística](www.ime.usp.br) da [Universidade de São Paulo](www.usp.br) (além de
+um ser humano com outros interesses diversos -- não se deixe definir por uma só
+coisa!).
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+Neste site, estão armazenados longe dos olhos do público alguns escritos e
+projetos pessoais (majoritariamente inúteis), além de informações gerais sobre a
+tal pessoa (eu).
