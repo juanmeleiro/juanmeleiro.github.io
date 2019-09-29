@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-permalink: /about/
+permalink: about
 ---
 
 Juan Meleiro é estudante de matemática no [Instituto de Matemática e
