@@ -7,6 +7,7 @@
   date: 2019-01-29
   nocite: |
     @marcus18
+  license: cc-by-sa
 ---
 
 Há muito que eu gosto na arte da tipografia. Umas dessas coisas é a sua

@@ -2,6 +2,7 @@
 date: "2018-04-30"
 description: Exploração sobre citações-dentro-de-citações.
 title: Citações de profundidade arbitrária
+license: cc-by-sa
 ---
 
 As questões que deram origem a este post foram bem ilustradas em uma [pergunta do StackExchange](https://english.stackexchange.com/questions/189795/quotations-and-square-brackets):
