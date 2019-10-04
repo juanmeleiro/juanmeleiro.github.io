@@ -29,7 +29,8 @@ github_username:  "juanmeleiro"
 
 # Build settings
 theme: minima
-# plugins:
+plugins:
+    - jekyll-menus
 #   - jekyll-feed
 
 # Top level pages
