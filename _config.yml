@@ -32,6 +32,15 @@ theme: minima
 # plugins:
 #   - jekyll-feed
 
+# Top level pages
+#
+# This paths will be included in the nav-bar, with their titles as links. For
+# more information, take a look at _includes/header.html
+header_pages:
+    - about.md
+    - cv.md
+    - others.html
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
