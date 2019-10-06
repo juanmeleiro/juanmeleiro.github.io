@@ -33,7 +33,7 @@ disqus:
 theme: minima
 plugins:
     - jekyll-menus
-#   - jekyll-feed
+    - jekyll-feed
 
 # Top level pages
 #
