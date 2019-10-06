@@ -1,3 +1,7 @@
-others:
-    title: "Textos da Mosaico"
-    identifier: mosaico
+---
+    others:
+        - title: "Textos da Mosaico"
+          identifier: mosaico
+        - title: "The Turing Archive"
+          identifier: turing
+---
