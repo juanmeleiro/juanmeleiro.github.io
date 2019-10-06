@@ -12,5 +12,13 @@ Neste site, estão armazenados longe dos olhos do público alguns escritos e
 projetos pessoais (majoritariamente inúteis), além de informações gerais sobre a
 tal pessoa (eu).
 
+* * *
+
+Este site está hospedado no [Github Pages][pages], usando [Jekyll][jekyll] e o
+esquema de cores [Solarized (Dark)][solarized].
+
 [ime]: https://www.ime.usp.br
 [usp]: https://www.usp.br
+[pages]: https://pages.github.com/
+[jekyll]: https://jekyllrb.com/
+[solarized]: https://ethanschoonover.com/solarized/
