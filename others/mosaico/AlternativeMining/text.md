@@ -1,7 +1,8 @@
 ---
-  title:
-  author: Juan Meleiro
-  bibliography: ref.bib
+menus: mosaico
+title:
+author: Juan Meleiro
+bibliography: ref.bib
 ---
 
 Existe um problema energético envolvendo blockchain. O dado sempre repetido é de que uma única transação de Bitcoin consome tanta energia quanto uma “casa americana média” durante uma semana [@malmo_one_2017]. Desse consumo exacerbado surge um conflito com a atual situação em que vivemos, entremeada de discussões sobre o uso de energia e mudança climática. Não é a toa que nesse contexto surgem cá e lá candidatos dos mais criativos a formas _alternativas_ de minerar.

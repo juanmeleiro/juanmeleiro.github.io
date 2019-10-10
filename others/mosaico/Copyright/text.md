@@ -1,7 +1,8 @@
 ---
-  title: Blockchain e direitos autorais
-  author: Juan Meleiro
-  bibliography: ref.bib
+menus: mosaico
+title: Blockchain e direitos autorais
+author: Juan Meleiro
+bibliography: ref.bib
 ---
 
 Hoje existem inúmeros  serviços que afirmam permitir o registro de obras e proteção dos direitos autorais associados [@willms_is_2016]. A ideia geral é de que <ideia> <referencia>.

@@ -1,7 +1,8 @@
 ---
-  bibliography: ref.bib
-  lang: pt-BR
-  title: Microgrids e Economias de Compartilhamento
+menus: mosaico
+bibliography: ref.bib
+lang: pt-BR
+title: Microgrids e Economias de Compartilhamento
 ---
 
 > A era do capitalismo está passando... não rapidamente, mas inevitavelmente.

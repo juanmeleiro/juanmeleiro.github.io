@@ -1,4 +1,5 @@
 ---
+menus: mosaico
 bibliography: "ref.bib"
 nocite: |
   @*

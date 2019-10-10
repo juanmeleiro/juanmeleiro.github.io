@@ -1,7 +1,8 @@
 ---
-  title: Blockchain no Setor da Saúde
-  bibliography: ref.bib
-  author: Juan Meleiro
+menus: mosaico
+title: Blockchain no Setor da Saúde
+bibliography: ref.bib
+author: Juan Meleiro
 ---
 
 Vivemos na era dos dados e dos algorítmos. De fato, hoje no mundo são gerados 2,5 hexabytes de dados _por dia_ (o equivalente a aproximadamente 2&thinsp;500&thinsp;000 HDs externos). Noventa porcento dos dados que existem foram gerados nos últimos dois anos [@marr_how_nodate] -- essa é a loucura do crescimento exponencial.

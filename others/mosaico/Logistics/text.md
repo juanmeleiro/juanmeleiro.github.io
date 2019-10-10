@@ -1,8 +1,9 @@
 ---
-  bibliography: ref.bib
-  title: Blockchain na Logística
-  author: Juan Meleiro
-  lang: pt-br
+menus: mosaico
+bibliography: ref.bib
+title: Blockchain na Logística
+author: Juan Meleiro
+lang: pt-br
 ---
 
 Uma supply-chain é essencialmente descentralizada. Há, em geral, muitos

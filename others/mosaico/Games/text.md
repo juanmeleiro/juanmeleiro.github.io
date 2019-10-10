@@ -1,6 +1,7 @@
 ---
-  title: Blockchain em Games
-  bibliography: ref.bib
+menus: mosaico
+title: Blockchain em Games
+bibliography: ref.bib
 ---
 
 Nos últimos tempos temos visto uma onda crescente dos chamados “jogos em blockchain”. [@noauthor_video-games_2018] Esse tendência abre novas possibilidades de futuro para a tecnologia, mas também levanta algumas questões preocupantes. Primeiro, do ponto de vista de _game development_ -- ou se os jogos vão usar ou se subordinar a blockchain. Segundo, sobre a ideia de que blockchain é uma panaceia -- ou ainda, de que blockchain resolve qualquer coisa (não resolve).
