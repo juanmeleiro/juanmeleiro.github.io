@@ -1,5 +1,4 @@
 ---
-menus: mosaico
 title: Blockchain em meios de pagamento
 subtitle: Como blockchain pode tornar pagamento por cartão de crédito mais seguro e conveniente
 bibliography: ref.bib

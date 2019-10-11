@@ -1,5 +1,4 @@
 ---
-menus: mosaico
 bibliography: ref.bib
 lang: pt-BR
 title: e-Estonia

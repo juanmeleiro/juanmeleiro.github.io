@@ -1,5 +1,5 @@
 ---
-menus: mosaico
+title: CruzeiroOS
 bibliography: "ref.bib"
 lang: "pt-br"
 ---

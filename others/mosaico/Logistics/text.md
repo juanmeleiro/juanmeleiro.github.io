@@ -1,5 +1,4 @@
 ---
-menus: mosaico
 bibliography: ref.bib
 title: Blockchain na Logística
 author: Juan Meleiro

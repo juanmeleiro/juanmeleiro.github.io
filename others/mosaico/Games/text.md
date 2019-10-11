@@ -1,5 +1,4 @@
 ---
-menus: mosaico
 title: Blockchain em Games
 bibliography: ref.bib
 ---

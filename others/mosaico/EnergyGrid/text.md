@@ -1,5 +1,4 @@
 ---
-menus: mosaico
 bibliography: ref.bib
 lang: pt-BR
 title: Microgrids e Economias de Compartilhamento

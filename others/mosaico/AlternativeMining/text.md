@@ -1,6 +1,5 @@
 ---
-menus: mosaico
-title:
+title: Mineraçào alternativa
 author: Juan Meleiro
 bibliography: ref.bib
 ---

@@ -1,5 +1,4 @@
 ---
-menus: mosaico
 title: Blockchain no Setor da Saúde
 bibliography: ref.bib
 author: Juan Meleiro
