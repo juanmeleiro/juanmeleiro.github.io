@@ -1,4 +1,6 @@
 ---
+layout: post
+published: false
 title: BitNation
 bibliography: ref.bib
 lang: "pt-br"

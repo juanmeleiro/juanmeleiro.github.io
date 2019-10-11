@@ -1,7 +1,9 @@
 ---
+layout: post
+published: false
 title: Prova de Existência
 subtitle: um caso pelas soluções criptográficas
-bibliography: "ref.bib"
+bibliography: ref.bib
 nocite: |
     @*
 ---

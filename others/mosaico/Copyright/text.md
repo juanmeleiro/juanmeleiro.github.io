@@ -1,4 +1,6 @@
 ---
+layout: post
+published: false
 title: Blockchain e direitos autorais
 author: Juan Meleiro
 bibliography: ref.bib

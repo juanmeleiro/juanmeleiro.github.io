@@ -1,4 +1,6 @@
 ---
+layout: post
+published: false
 title: Mineraçào alternativa
 author: Juan Meleiro
 bibliography: ref.bib

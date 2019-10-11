@@ -1,6 +1,8 @@
 ---
+layout: post
+published: false
 title: CruzeiroOS
-bibliography: "ref.bib"
+bibliography: ref.bib
 lang: "pt-br"
 ---
 

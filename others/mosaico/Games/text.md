@@ -1,4 +1,6 @@
 ---
+layout: post
+published: false
 title: Blockchain em Games
 bibliography: ref.bib
 ---

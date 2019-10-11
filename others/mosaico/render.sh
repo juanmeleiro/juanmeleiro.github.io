@@ -10,7 +10,8 @@ do
         pandoc --filter pandoc-citeproc text.md -o text.html
         cat <(awk '/---/{flag=1-flag;print;next}flag' text.md) text.html > temp
         mv -f temp text.html
-        sed -i '2imenus: mosaico' text.html
+        sed -i 's/published: false/menus: mosaico/' text.html
+        sed -i 's/bibliography: ref.bib//' text.html
         echo "Done"
         cd ..
     fi

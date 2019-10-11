@@ -1,4 +1,6 @@
 ---
+layout: post
+published: false
 bibliography: ref.bib
 lang: pt-BR
 title: e-Estonia
