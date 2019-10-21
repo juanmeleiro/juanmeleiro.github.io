@@ -33,7 +33,7 @@ disqus:
 # Build settings
 theme: minima
 plugins:
-    - jekyll-menus
+    # - jekyll-menus
     - jekyll-feed
 
 # Top level pages
@@ -44,6 +44,14 @@ header_pages:
     - about.md
     - cv.md
     - others.html
+
+collections:
+    turing:
+        output: true
+        relative_directory: 'others/turing'
+    mosaico:
+        output: true
+        relative_directory: 'others/mosaico'
 
 # Exclude from processing.
 # The following items will not be processed, by default.
