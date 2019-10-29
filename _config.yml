@@ -47,9 +47,11 @@ header_pages:
 
 collections:
     turing:
+        title: "Turing Archive"
         output: true
         relative_directory: 'others/turing'
     mosaico:
+        title: "Textos da Mosaico"
         output: true
         relative_directory: 'others/mosaico'
 

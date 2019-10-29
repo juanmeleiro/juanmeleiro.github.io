@@ -4,6 +4,17 @@
 ---
 
 <nav>
-    {% assign menu = site.menus.others %}
-    {% include menu.html %}
+
+
+    {% for c in site.collections %}
+        {% if c.label != "posts" %}
+            <h1>{{ c.title }}</h1>
+            <ul>
+            {% for p in c.docs %}
+            <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+
 </nav>
