@@ -50,10 +50,10 @@ collections:
         title: "Turing Archive"
         output: true
         relative_directory: 'others/turing'
-    mosaico:
-        title: "Textos da Mosaico"
-        output: true
-        relative_directory: 'others/mosaico'
+    # mosaico:
+    # mosatitle: "Textos da Mosaico"
+    # mosaoutput: true
+    # mosarelative_directory: 'others/mosaico'
 
 # Exclude from processing.
 # The following items will not be processed, by default.
