@@ -17,4 +17,9 @@
         {% endif %}
     {% endfor %}
 
+    <h1>Scripts</h1>
+
+    {% capture utilities %}{% include_relative _data/utilities.md %}{% endcapture %}
+    {{ utilities | markdownify }}
+
 </nav>
