@@ -4,6 +4,22 @@
 ---
 
 <nav>
-    {% assign menu = site.menus.others %}
-    {% include menu.html %}
+
+
+    {% for c in site.collections %}
+        {% if c.label != "posts" %}
+            <h1>{{ c.title }}</h1>
+            <ul>
+            {% for p in c.docs %}
+            <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+
+    <h1>Scripts</h1>
+
+    {% capture utilities %}{% include_relative _data/utilities.md %}{% endcapture %}
+    {{ utilities | markdownify }}
+
 </nav>
