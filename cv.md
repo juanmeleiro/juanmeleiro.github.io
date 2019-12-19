@@ -1,6 +1,6 @@
 ---
 title: Currículo
-layout: page
+layout: default
 permalink: cv/
 ---
 
