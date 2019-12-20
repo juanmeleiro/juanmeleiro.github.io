@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Archives
+title: Posts
 ---
 
 <div id="blog-archives">
@@ -15,6 +15,7 @@ title: Archives
 			{% else %}
 				<h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
 			{% endif %}
+            <p>{{ post.date | date: "%Y-%m-%d" }}</p>
 		</article>
 	{% endfor %}
 
