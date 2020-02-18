@@ -22,6 +22,7 @@ paginate: 10
 header_pages:
     - about.md
     - cv.md
+    - tweets.html
     - others.html
 
 collections:
