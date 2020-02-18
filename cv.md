@@ -2,6 +2,7 @@
 title: Currículo
 layout: default
 permalink: cv/
+modified: 2020-02-10T20:53:13-03:00
 ---
 
 # Formação
