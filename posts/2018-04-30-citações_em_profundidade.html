@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <base href="http://localhost:8080/"/>
+        <title>Juan F. Meleiro</title>
+        <link rel="icon" href="/favicon.png" type="image/png"/>
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="">Juan F. Meleiro</a>
+
+            </h1>
+            <h2>Personal website</h2>
+
+        </header>
+        <nav>
+            <ul>
+<li><a href="cv">Currículo</a></li>
+<li><a href="posts">Posts</a></li>
+<li><a href="turing">Turing Hall</a></li>
+</ul>
+</nav>
+<article>
+<h1 id="citações-em-profundidade-arbitrária">Citações em Profundidade Arbitrária</h1>
+<p>As questões que deram origem a este post foram bem ilustradas em uma <a href="https://english.stackexchange.com/questions/189795/quotations-and-square-brackets">pergunta do StackExchange</a>:</p>
+<blockquote>
+<p>Tenho uma pergunta. Se estou citando uma citação que já tem colchetes, mas quero adicionar colchetes porque há erros de ortografia e então quero adicionar “[sic]”. Simplesmente adiciono isso à citação ou mudo os colchetes na citação?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</blockquote>
+<p>Relembrando, a fim de esclarecimento, que numa citação direta, caso se deseje fazer uma modificação, é necessário indica-la usando colchetes. Normalmente isso é feito com o propósito de clarificar algo a que foi feito referência antes no texto original, mas cuja menção foi omitida<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>Um ponto específico nas respostas me chamou atenção. Rand al’Thor pontuou:</p>
+<blockquote>
+<p>Você poderia usar chaves: {sic}. Já vi isso feito; tem a vantagem de não ser confundível com os colchedes que já estão lá, mas você não precisa mudar nada na citação.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+</blockquote>
+<p>Sven Yargs respondeu, que, apesar disso, a solução “não estabelece além de qualquer dúvida que as chaves são suas e que os colchetes são do autor original. Pra fazer isso, você teria que indicar em alguma nota em algum lugar que as chaves são suas e os colchetes do autor original”.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>Além disso, comenta:</p>
+<blockquote>
+<p>E se você adotar as chaves nesse momento, o que acontece quando você for usar outra citação em bloco que não já tinha colchetes do autor mas que (como a primeira citação em bloco) tem erros de ortografia dos quais você quer se distanciar? Você novamente usa as chaves, apesar de que a citação original não tenha colchetes; ou você troca pelos colchetes e adiciona uma nova nota, dessa vez informando os leitores de que os colchetes são seus? <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+</blockquote>
+<p>Minha conclusão dessa resposta é que, de fato, não existe uma solução bem estabelecida para este problema. Tanto é que a sugestão seguinte do mesmo usuário é de indicar entre parenteses no final de uma citação que os erros de ortografia de fato estão no original. Ou seja, a solução é desistir de uma indicação tipográfica e interromper o texto para esclarecer esse aspecto da citação por extenso.</p>
+<p>Isso é uma solução, mas definitivamente não é elegante. Afinal, já temos convenções tipográficas para indicar citações dentro de citações, porque não poderiamos ter uma que lidasse com modificações delas?</p>
+<hr />
+<p>Na minha megalomania matemática de querer generalizar tudo, ao máximo, tive algumas ideias:</p>
+<h2 id="identificação-absoluta">Identificação absoluta</h2>
+<p>Como o problema se trata de identificar claramente o autor de uma modificação, pensei em usar o mesmo mecanismo que já usamos desde muito tempo: uma assinatura. A ideia se trata de adicionar aos colchetes como subscrito um identificador único (dentro de um mesmo texto) associado a cada fonte. Usando o mesmo exemplo da resposta no StackExchange, ficaria assim:</p>
+<blockquote>
+<p>Apple pize are my flavorite [sic]<sub>J</sub>, not because their combination of fruit and cinnamon, of tart and sweet and spicy delivers a perfect medley of olfactory and gustatory delight, but because—as Travis Bickle makes clear in Taxi Driver [1976, directed by Martin Scorsese]<sub>A</sub> — they invite (and indeed insist upon) a temporary resolution of the perennial philosophical choice between cheese and no cheese.</p>
+</blockquote>
+<p>Onde, claramente, “J” indicaria minha adição, e “A” a adição do autor original (o ideal seria substituir pelas iniciais do autor; como não as conheço, usei “A”).</p>
+<h2 id="identificação-relativa">Identificação relativa</h2>
+<p>Uma segunda solução faz uso das convenções que já existem no uso de aspas. Uma citação dentro de outra, em geral, usa outro símbolo que a exterior. Por exemplo:</p>
+<center>
+“Como um sábio chinês já dizia: ‘passe o sal, por favor’”.
+</center>
+<p>No caso das adições com colchetes, então, usariamos diversos níveis de colchetes. Os dois primeiros seriam “[]” e “[[]]”. Então, novamente usando o exemplo anterior:</p>
+<blockquote>
+<p>Apple pize are my flavorite [[sic]], not because their combination of fruit and cinnamon, of tart and sweet and spicy delivers a perfect medley of olfactory and gustatory delight, but because—as Travis Bickle makes clear in Taxi Driver [1976, directed by Martin Scorsese] — they invite (and indeed insist upon) a temporary resolution of the perennial philosophical choice between cheese and no cheese.</p>
+</blockquote>
+<hr />
+<p>Porque alguém usaria essas soluções? Em primeiro lugar, porque pode. Afinal, qualquer edito de texto hoje em dia é capaz de introduzir subscritos ou caractéres especiais. Em segundo lugar, porque as duas soluções oferecem uma experiência de leitura mais flúida que comentários colocados em parênteses. No caso anterior, em particular, provavelmente a maior parte dos leitores nem perceberia os erros até que apontados. Um parenteses no final da citações os induziria a voltar e procurar os erros — o que interrompe o fluxo da leitura.</p>
+<p>Além disso, são soluções elegantes. Um texto que as utilize ganha pontos de estilo (na minha opinião).</p>
+<p>É claro que, como não são soluções difundidas, seria necessário indicar em alguma nota a convenção tipográfica. Mas são intuitivas, e o leitor logo se acostumaria. Além disso, não é possível difundir soluções se ninguém está disposto a discutí-las.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>No original: “I have a question. If I am quoting a quote which has square brackets in it already, but I want to add square brackets because there are spelling mistakes so I want to add”[sic]“. Do I just add it to the quote or do I change the square brackets in the quote?”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Uma explicação mais detalhada: <a href="https://pt.wikipedia.org/wiki/Colchete_(s%C3%ADmbolo)#Emprego_dos_Colchetes">https://pt.wikipedia.org/wiki/Colchete_(s%C3%ADmbolo)#Emprego_dos_Colchetes</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>No original: “You could use curly brackets: {sic}. I’ve seen this done; it has the advantage of not being mixable up with the square brackets already there, but you don’t need to change anything in the quote.”<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>No original: “doesn’t establish beyond the shadow of a doubt that the curly brackets are yours and the square brackets are the original author’s. To accomplish that, you’d have to point out in a note somewhere that the curly brackets are yours and the square brackets are the original author’s.”<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>No original: “And if you adopt the curly bracket treatment this time, what happens when you have another block quote later on that doesn’t have built-in square brackets from the author but that (like the first block quote) does have typos that you want to distance yourself from? Do you again put sic in curly brackets, even though the original block quote has no square brackets; or do you switch to square brackets and add another note, this time letting readers know that the square brackets are yours?”<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+        </article>
+        <footer>
+            <p xmlns:dct="http://purl.org/dc/terms/"
+               xmlns:cc="http://creativecommons.org/ns#"
+               class="license-text">
+                Except where otherwise noted, content on this website by
+                <a rel="cc:attributionURL"
+                   href="https://juanmeleiro.mat.br">
+                  <span rel="cc:attributionName">
+                      Juan F. Meleiro
+                  </span>
+                </a>
+                is licensed under CC BY-SA 4.0
+            </p>
+                <a href="https://creativecommons.org/licenses/by-sa/4.0">
+                    <img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" />
+                    <img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg" />
+                    <img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" />
+                </a>
+        </footer>
+    </body>
+</html>

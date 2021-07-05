@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <base href="http://localhost:8080/"/>
+        <title>Juan F. Meleiro</title>
+        <link rel="icon" href="/favicon.png" type="image/png"/>
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="">Juan F. Meleiro</a>
+
+            </h1>
+            <h2>Personal website</h2>
+
+        </header>
+        <nav>
+            <ul>
+<li><a href="cv">Currículo</a></li>
+<li><a href="posts">Posts</a></li>
+<li><a href="turing">Turing Hall</a></li>
+</ul>
+</nav>
+<article>
+<p>Esta é uma exploração do conceito de Grito Escrito, ou, ainda, da <em>Tipografia do Grito</em>. É uma <del>obra magnifica</del> provocação que leva à pergunta: “tipograficamente, qual a maneira correta de se gritar em texto?”</p>
+<p>Existem muitas possíveis respostas para essa pergunta. Entre elas, “a pergunta não faz sentido, pois não há maneira correta”, ou “qual é o seu problema?”, ou ainda “a terceira” — embora essa última só faça sentido para gritos mais expressivos do que dois caractéres.</p>
+<p>É uma pergunta relevante, na medida em que você se preocupe com tipografia (o que provavelmente não é verdade, mas eu <em>sim</em> me preocupo, muito obrigado), e na medida em que gritar é uma ação muitas vezes necessária na Internet.</p>
+<p>“Mas eu posso gravar um audio no WhatsApp gritando”, me respondem. Sim, pode. Mas em honra à tradição escrita da comunicação humana, a questão da Tipografia do Grito é um problema que deve ser discutido. Numa época em que audios, <em>InstaStories</em> e afins estão destruíndo a nossa capacidade comunicativa, acredito numa retomada da tradição dos grandes tipógrafos — na forma de gritos.</p>
+<h2 id="gritos-1">Gritos 1</h2>
+<p>A primeira iteração da ideia é um “projeto” antigo meu, escrito em <code>Racket</code>, usando a biblioteca <code>Pict</code> (que fique registrado que eu não sei programar em <code>Racket</code>).</p>
+<hr />
+<p>Primeiro algumas definições inclusas a título de esclarecimento.</p>
+<pre class="racket"><code>(define textColor (list 0 0 0))
+(define rectangleColor (list 220 220 220))
+(define backgroundColor (list 200 200 200))</code></pre>
+<p>Este é o código que gera, efetivamente, os gritos. A primeira função repete um caractere, e a segunda gera o <code>i</code>-ésimo grito dos gritos de (arbitrariamente decididos) cinco caracteres.</p>
+<pre class="racket"><code>(define repeat
+  (lambda (n s)
+    (if (= 0 n) &quot;&quot;
+        (string-append s
+                       (repeat (- n 1) s)))))
+(define makeAH
+  (lambda (i)
+    (colorize (text (string-append (repeat i &quot;A&quot;)
+                                   (repeat (- 5 i) &quot;H&quot;))
+                    (cons &#39;bold &#39;modern)
+                    25)
+              textColor)))</code></pre>
+<p>E finalmente, a imagem final é definida; com direito a bordas cinzas e deprimentes.</p>
+<pre class="racket"><code>(define final
+  (cc-superimpose (colorize (filled-rectangle 500 500)
+                            backgroundColor)
+                  (cc-superimpose (colorize (filled-rectangle 100 125)
+                                            rectangleColor)
+                                  (apply vc-append (map makeAH (list 1 2 3 4))))))</code></pre>
+<p>Note como a presença de números mágicos no código o torna <em>feio</em>. Porque <del>merda</del> tem uma <code>(list 1 2 3 4)</code> que poderia ser facilmente abstraída? De qualquer forma, não modifiquei o código por seu valor histórico pessoal; e como um testemunho à minha antiga incompetência.</p>
+<p>A final, existe código (omitido) para gerar um <code>.png</code>.</p>
+<p>O resultado foi esse:</p>
+<figure>
+<img src="/assets/imgs/screams.png" alt="screams" /><figcaption aria-hidden="true">screams</figcaption>
+</figure>
+<h2 id="gritos-2">Gritos 2</h2>
+<p>Mais recentemente decidi refazer esse projeto. Contando com <del>a mesma incapacidade</del> mais experiência e conhecimento de programação, imaginei que seria capaz de programá-lo melhor e mais elegante.</p>
+<p>Continua ruim.</p>
+<hr />
+<p>Este é o código que gera as linhas de texto</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">screams ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> [<span class="dt">String</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>screams n <span class="ot">=</span> <span class="fu">map</span> (scream n) [<span class="dv">1</span><span class="op">..</span>(n<span class="op">-</span><span class="dv">1</span>)]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">scream ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">String</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>scream n m <span class="ot">=</span> <span class="fu">replicate</span> m <span class="ch">&#39;A&#39;</span> <span class="op">++</span> <span class="fu">replicate</span> (n<span class="op">-</span>m) <span class="ch">&#39;H&#39;</span></span></code></pre></div>
+<p>O resto do programa serve para transformar as linhas de texto em código de <code>SVG</code>, e para lidar com opções de linha de comando (<code>n</code> e o tamanho da fonte). Por algum senso de vergonha, não vou reproduzí-lo aqui. Mas o resultado para <code>n = 80</code> é</p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="468.47998" height="632.0" style="font-family:Anonymous Pro">
+<text font-size="8.0pt" x="0.0" y="8.0">AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="16.0">AAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="24.0">AAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="32.0">AAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="40.0">AAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="48.0">AAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="56.0">AAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="64.0">AAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="72.0">AAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="80.0">AAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="88.0">AAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="96.0">AAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="104.0">AAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="112.0">AAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="120.0">AAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="128.0">AAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="136.0">AAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="144.0">AAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="152.0">AAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="160.0">AAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="168.0">AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="176.0">AAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="184.0">AAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="192.0">AAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="200.0">AAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="208.0">AAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="216.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="224.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="232.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="240.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="248.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="256.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="264.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="272.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="280.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="288.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="296.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="304.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="312.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="320.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="328.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="336.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="344.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="352.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="360.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="368.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="376.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="384.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="392.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="400.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="408.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="416.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="424.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="432.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="440.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="448.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="456.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="464.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="472.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="480.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="488.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="496.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="504.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="512.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="520.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="528.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="536.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="544.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="552.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="560.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="568.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="576.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="584.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHH</text> <text font-size="8.0pt" x="0.0" y="592.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHH</text> <text font-size="8.0pt" x="0.0" y="600.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHH</text> <text font-size="8.0pt" x="0.0" y="608.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHH</text> <text font-size="8.0pt" x="0.0" y="616.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHH</text> <text font-size="8.0pt" x="0.0" y="624.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHH</text> <text font-size="8.0pt" x="0.0" y="632.0">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH</text>
+</svg>
+        </article>
+        <footer>
+            <p xmlns:dct="http://purl.org/dc/terms/"
+               xmlns:cc="http://creativecommons.org/ns#"
+               class="license-text">
+                Except where otherwise noted, content on this website by
+                <a rel="cc:attributionURL"
+                   href="https://juanmeleiro.mat.br">
+                  <span rel="cc:attributionName">
+                      Juan F. Meleiro
+                  </span>
+                </a>
+                is licensed under CC BY-SA 4.0
+            </p>
+                <a href="https://creativecommons.org/licenses/by-sa/4.0">
+                    <img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" />
+                    <img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg" />
+                    <img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" />
+                </a>
+        </footer>
+    </body>
+</html>

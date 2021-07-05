@@ -1,0 +1,251 @@
+/* General */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+
+:root {
+
+    // ----------------------------------------------------------------------------
+    // Light Mode
+    // ----------------------------------------------------------------------------
+
+    // Light Background
+    --gb-lm-bg0: #fbf1c7;
+    --gb-lm-bg0-hard: #f9f5d7;
+    --gb-lm-bg0-soft: #f2e5bc;
+    --gb-lm-bg1: #ebdbb2;
+    --gb-lm-bg2: #d5c4a1;
+    --gb-lm-bg3: #bdae93;
+    --gb-lm-bg4: #a89984;
+
+    // Light Foreground
+    --gb-lm-fg0: #282828;
+    --gb-lm-fg1: #3c3836;
+    --gb-lm-fg2: #504945;
+    --gb-lm-fg3: #665c54;
+    --gb-lm-fg4: #7c6f64;
+
+    // Light Colors
+    --gb-lm-dark-red: #cc241d;
+    --gb-lm-dark-green: #98971a;
+    --gb-lm-dark-yellow: #d79921;
+    --gb-lm-dark-blue: #458588;
+    --gb-lm-dark-purple: #b16286;
+    --gb-lm-dark-aqua: #689d6a;
+    --gb-lm-dark-orange: #d65d0e;
+    --gb-lm-dark-gray: #928374;
+
+    --gb-lm-light-red: #9d0006;
+    --gb-lm-light-green: #79740e;
+    --gb-lm-light-yellow: #b57614;
+    --gb-lm-light-blue: #076678;
+    --gb-lm-light-purple: #8f3f71;
+    --gb-lm-light-aqua: #427b58;
+    --gb-lm-light-orange: #af3a03;
+    --gb-lm-light-gray: #7c6f64;
+
+    --body-background:        var(--gb-lm-bg0-hard);
+    --header-background:      var(--gb-lm-bg0-hard);
+    --article-background:     var(--gb-lm-bg0-hard);
+    --nav-default-background: var(--gb-lm-bg0-hard);
+
+    --nav-hover-foreground:   var(--gb-lm-fg4);
+    --nav-hover-background:   var(--gb-lm-bg2);
+
+    --nav-default-foreground: var(--gb-lm-fg1);
+    --header-title-foreground:      var(--gb-lm-fg1);
+    --header-subtitle-foreground:   var(--gb-lm-fg3);
+    --article-foreground:     var(--gb-lm-fg1);
+
+    /* Fonts */
+    --header-title-font-family: "Crimson Text";
+    --header-subtitle-font-family: "Crimson Text";
+
+    --nav-font-family: "Source Code Pro";
+    --nav-font-size: 14pt;
+
+    --article-body-font-family: "Source Sans Pro";
+    --article-body-font-size: 14pt;
+    --article-heading-font-family: "Crimson Text";
+
+    --footer-font-family: "Source Code Pro";
+
+    --microblog-text-font-family: "Crimson Text";
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'EB Garamond'; /* Link to Google Fonts */
+    background: var(--body-background);
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--gb-lm-light-blue);
+}
+
+/* Header */
+
+header {
+    flex: 0 1 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+
+    background: var(--header-background);
+    color: var(--header-title-foreground);
+}
+
+header h1 {
+    margin-left: 20pt;
+    font-family: var(--header-title-font-family);
+    font-weight: regular;
+    margin-bottom: 0;
+}
+
+header h1 a {
+    color: var(--header-title-foreground);
+}
+
+header h2 {
+    font-style: italic;
+    font-family: var(--header-subtitle-font-family);
+    color: var(--header-subtitle-foreground);
+    margin-left: 20pt;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+nav {
+    font-family: var(--nav-font-family);
+    font-size: var(--nav-font-size);
+    flex: 0 1 auto;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+nav ul li {
+    flex-basis: content;
+    flex-grow: 1;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: auto;
+    width: 100%;
+    line-height: 4em;
+
+    color: var(--nav-default-foreground);
+    background: var(--nav-default-background);
+}
+
+nav ul li a:hover {
+    color: var(--nav-hover-foreground);
+    background: var(--nav-hover-background);
+}
+
+/* Main content */
+
+article {
+    flex: 1 1 auto;
+
+    background: var(--article-background);
+    color: var(--article-foreground);
+    margin-bottom: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+article h1,h2,h3,h4,h5,h6 {
+    font-family: var(--article-heading-font-family);
+}
+
+article h1 {
+    text-align: center;
+    font-size: 24pt;
+    font-weight: normal;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+article h2 {
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+}
+
+article * {
+    text-align: justify;
+    max-width: 40em;
+    color: var(--article-foreground);
+    margin: auto;
+}
+
+article a {
+    color: var(--gb-lm-light-blue);
+}
+
+article p {
+    font-family: var(--article-body-font-family);
+    font-size: var(--article-body-font-size);
+}
+
+p + blockquote {
+    margin-top: 1em;
+}
+
+blockquote {
+    margin-bottom: 1em;
+}
+
+article p + p {
+    text-indent: 2em;
+}
+
+article hr {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 0;
+    border: 0;
+    border-top: 1pt solid;
+}
+
+/* Footer */
+
+footer {
+    font-family: var(--footer-font-family);
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    justify-content: space-evenly;
+    margin-top: 3em;
+    max-width: 40em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+}
+
+footer * {
+    display: inline-block;
+    text-align: center;
+    flex-grow: 1;
+}
